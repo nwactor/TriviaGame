@@ -68,6 +68,9 @@ $('.option').on('click', function() {
 function enterAnswerMode(givenAnswer) {
 	setModeVisibility('answer');
 
+	//stop the timer
+	clearInterval(intervalId);
+
 	//show the answer, whether the user got it right, and the accompanying picture/gif
 	if(givenAnswer == currentQuestion.correct) {
 		$('#correct-or-not').text('You got it right!');
@@ -86,10 +89,9 @@ function enterAnswerMode(givenAnswer) {
 	questionNumber++;
 	if(questionNumber < questionBank.length) {
 		//timer for next question
-		clearInterval(intervalId);
-		setInterval(function() {
+		setTimeout(function() {
 			enterQuestionMode();
-		}, 5000);
+		}, 4000);
 	} else {
 		//go to results mode
 		enterResultsMode();
@@ -100,8 +102,14 @@ function enterAnswerMode(givenAnswer) {
 
 function enterResultsMode() {
 	setModeVisibility('results');
+	$('#time-remaining').css('display', 'none');
 
+	$('#correct-stat').text(correct);
+	$('#wrong-stat').text(incorrect);
+	$('#unanswered-stat').text(unanswered);
 }
+
+$('#restart-btn').on('click', enterStartMode);
 
 
 
@@ -152,9 +160,9 @@ var questionBank = [
 	new question(
 		"What is at the center of the Milky Way?",
 		[
-			"Worm Hole", 
+			"A Worm Hole", 
 			"Stars. Lots of stars", 
-			"Black Hole", 
+			"A Black Hole", 
 			"Nugat"
 		],
 		3,
@@ -164,9 +172,9 @@ var questionBank = [
 		"What has the highest density?",
 		[
 			"Lead", 
-			"Red Giant Star", 
+			"A Red Giant Star", 
 			"The Universe", 
-			"Neutron Star"
+			"A Neutron Star"
 		],
 		4,
 		""
@@ -185,10 +193,10 @@ var questionBank = [
 	new question(
 		"What is the largest of these objects?",
 		[
-			"Galaxy", 
-			"Universe", 
-			"Laniakea Supercluster", 
-			"Black Hole"
+			"The Galaxy", 
+			"The Universe", 
+			"The Laniakea Supercluster", 
+			"A Black Hole"
 		],
 		2,
 		""
@@ -205,7 +213,7 @@ var questionBank = [
 		""
 	),
 	new question(
-		"How long does it take light from the Sun to reach the Earth?"
+		"How long does it take light from the Sun to reach the Earth?",
 		[
 			"1 second", 
 			"8 minutes", 
