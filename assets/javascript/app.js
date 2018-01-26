@@ -4,9 +4,14 @@ var unanswered = 0;
 var questionNumber = 0;
 var currentQuestion = undefined;
 var modes = ['start', 'question', 'answer', 'results'];
+var timeRemaining;
+var intervalId;
 
 //Entry point for program
 enterStartMode();
+
+
+
 
 function enterStartMode() {
 	setModeVisibility('start');
@@ -23,13 +28,38 @@ $('#start-btn').on('click', enterQuestionMode);
 
 function enterQuestionMode() {
 	setModeVisibility('question');
-	$('#time-remaining').css('display', 'inline');
+	
+	//display the question and possible answers
+	currentQuestion = questionBank[questionNumber];
+	$('#question').text(currentQuestion.question);
+	$('#option-1').text(currentQuestion.answers[0]);
+	$('#option-2').text(currentQuestion.answers[1]);
+	$('#option-3').text(currentQuestion.answers[2]);
+	$('#option-4').text(currentQuestion.answers[3]);
 
-	currentQuestion = questionBank[questionNumber]; 
+	//start the time-limit for the question 
+	$('#time-remaining').css('display', 'inline');
+	resetTimer();
+}
+
+function resetTimer() {
+	timeRemaining = 20;
+	countDown(); //so it begins immediately instead of waiting a second
+	intervalId = setInterval(countDown, 1000);
+}
+
+function countDown() {
+	if(timeRemaining === 0) {
+		clearInterval(intervalId);
+		enterAnswerMode(-1);
+	}
+
+	$('#time').text(timeRemaining);
+	timeRemaining--;
 }
 
 $('.option').on('click', function() {
-	var chosenOption = 1;
+	var chosenOption = $(this).attr('id').split().pop();
 	enterAnswerMode(chosenOption);
 });
 
@@ -38,6 +68,11 @@ function enterAnswerMode(givenAnswer) {
 	setModeVisibility('answer');
 
 	questionNumber++;
+	if(questionNumber < questionBank.length) {
+		//timer for next question
+	} else {
+		//go to results mode
+	}
 }
 
 function enterResultsMode() {
@@ -67,14 +102,14 @@ function question(question, answers, i, gif) {
 
 var questionBank = [
 	new question(
-		"",
+		"What is the name of the closest star to our Sun?",
 		[
-			"", 
-			"", 
-			"", 
-			""
+			"Alpha Centauri", 
+			"Proxima Centauri", 
+			"Barnard's Star", 
+			"Polaris"
 		],
-		1,
+		2,
 		""
 	),
 	new question(

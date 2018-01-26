@@ -23,26 +23,29 @@
 		<div id="time-remaining" class="row">
 			<div class="text-center">
 				<span class="h2">Time Remaining: </span>
-				<span id="time" class="h2"></span>
+				<span id="time" class="h2">20</span>
 			</div>
 		</div>
-		</div>
 		<div class="row question-mode">
-			<h2 id="question"></h2>
-		</div>
-		<div class="row question-mode">
-			<div id="options">
-				<div id="option-1" class="option"></div>
-				<div id="option-2" class="option"></div>
-				<div id="option-3" class="option"></div>
-				<div id="option-4" class="option"></div>
+			<div class="text-center border border-success border-rounded">
+				<h3 class="display-block">Question: </h3>
+				<h3 id="question"></h3>
 			</div>
+			
+		</div>
+		<div class="row question-mode text-center">
+			<ol>
+				<li id="option-1" class="option h5"></li>
+				<li id="option-2" class="option h5"></li>
+				<li id="option-3" class="option h5"></li>
+				<li id="option-4" class="option h5"></li>
+			</ol>
 		</div>
 		<div class="row answer-mode">
 			<span id="answer"></span>
 			<img id="answer-gif">
 		</div>
-		<div class="row result-mode">
+		<div class="row results-mode">
 			<span class="h2">Your Results:</span>
 			<div class="display-block">
 				<span>Correct Answers: </span>

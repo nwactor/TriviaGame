@@ -2,18 +2,10 @@ body {
 	background-image: url('../images/background.jpg');
 }
 
-/*.start-mode {
-	display: none;
-}
+.container {
+	min-height: 640px;
 
-.question-mode {
-	display: none;
+/*	min-height: 100%;
+	min-height: 100vh;
+	display: flex;*/
 }
-
-.answer-mode {
-	display: none;
-}
-
-.results-mode {
-	display: none;
-}*/
