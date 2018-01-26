@@ -92,6 +92,7 @@ function enterAnswerMode(givenAnswer) {
 		}, 5000);
 	} else {
 		//go to results mode
+		enterResultsMode();
 	}
 }
 
@@ -160,67 +161,67 @@ var questionBank = [
 		""
 	),
 	new question(
-		"What has the most mass?",
+		"What has the highest density?",
 		[
-			"", 
-			"", 
-			"", 
-			""
+			"Lead", 
+			"Red Giant Star", 
+			"The Universe", 
+			"Neutron Star"
+		],
+		4,
+		""
+	),
+	new question(
+		"What was the first man-made object to leave the Solar System?",
+		[
+			"Voyager 1", 
+			"Voyager 2", 
+			"The Enterprise", 
+			"Cassini"
 		],
 		1,
 		""
 	),
 	new question(
-		"",
+		"What is the largest of these objects?",
 		[
-			"", 
-			"", 
-			"", 
-			""
+			"Galaxy", 
+			"Universe", 
+			"Laniakea Supercluster", 
+			"Black Hole"
 		],
-		1,
+		2,
 		""
 	),
 	new question(
-		"",
+		"Who was the first person to set foot on another celesital body?",
 		[
-			"", 
-			"", 
-			"", 
-			""
+			"Buzz Aldrin", 
+			"Buzz Lightyear", 
+			"Neil Armstrong", 
+			"John Glenn"
 		],
-		1,
+		3,
 		""
 	),
 	new question(
-		"",
+		"How long does it take light from the Sun to reach the Earth?"
 		[
-			"", 
-			"", 
-			"", 
-			""
+			"1 second", 
+			"8 minutes", 
+			"Instantly", 
+			"One hour"
 		],
-		1,
+		2,
 		""
 	),
 	new question(
-		"",
+		"How many planets have been discovered outside the Solar System as of January 2018?",
 		[
-			"", 
-			"", 
-			"", 
-			""
-		],
-		1,
-		""
-	),
-	new question(
-		"",
-		[
-			"", 
-			"", 
-			"", 
-			""
+			"3,726", 
+			"None", 
+			"10,230", 
+			"407"
 		],
 		1,
 		""
