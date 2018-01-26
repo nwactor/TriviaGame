@@ -24,23 +24,8 @@ function enterStartMode() {
 	currentQuestion = undefined;
 }
 
+
 $('#start-btn').on('click', enterQuestionMode);
-
-function enterQuestionMode() {
-	setModeVisibility('question');
-	
-	//display the question and possible answers
-	currentQuestion = questionBank[questionNumber];
-	$('#question').text(currentQuestion.question);
-	$('#option-1').text(currentQuestion.answers[0]);
-	$('#option-2').text(currentQuestion.answers[1]);
-	$('#option-3').text(currentQuestion.answers[2]);
-	$('#option-4').text(currentQuestion.answers[3]);
-
-	//start the time-limit for the question 
-	$('#time-remaining').css('display', 'inline');
-	resetTimer();
-}
 
 function resetTimer() {
 	timeRemaining = 20;
@@ -58,8 +43,24 @@ function countDown() {
 	timeRemaining--;
 }
 
+function enterQuestionMode() {
+	setModeVisibility('question');
+	
+	//display the question and possible answers
+	currentQuestion = questionBank[questionNumber];
+	$('#question').text(currentQuestion.question);
+	$('#option-1').text(currentQuestion.answers[0]);
+	$('#option-2').text(currentQuestion.answers[1]);
+	$('#option-3').text(currentQuestion.answers[2]);
+	$('#option-4').text(currentQuestion.answers[3]);
+
+	//start the time-limit for the question 
+	$('#time-remaining').css('display', 'inline');
+	resetTimer();
+}
+
 $('.option').on('click', function() {
-	var chosenOption = $(this).attr('id').split().pop();
+	var chosenOption = $(this).attr('id').split("").pop();
 	enterAnswerMode(chosenOption);
 });
 
@@ -67,6 +68,21 @@ $('.option').on('click', function() {
 function enterAnswerMode(givenAnswer) {
 	setModeVisibility('answer');
 
+	//show the answer, whether the user got it right, and the accompanying picture/gif
+	if(givenAnswer == currentQuestion.correct) {
+		$('#correct-or-not').text('You got it right!');
+		correct++;
+	} else if(givenAnswer === -1) {
+		$('#correct-or-not').text('Out of time.');
+		unanswered++;
+	} else {
+		$('#correct-or-not').text('Incorrect.');
+		incorrect++;
+	}
+	$('#answer').text('The correct answer was ' + currentQuestion.answers[currentQuestion.correct - 1] + '.');
+	$('#answer-gif').attr('src', currentQuestion.gif);
+
+	//Go to the next question, or if out of questions go to the results mode
 	questionNumber++;
 	if(questionNumber < questionBank.length) {
 		//timer for next question
@@ -75,9 +91,14 @@ function enterAnswerMode(givenAnswer) {
 	}
 }
 
+
+
 function enterResultsMode() {
 	setModeVisibility('results');
+
 }
+
+
 
 function setModeVisibility(mode) {
 	for(var i = 0; i < modes.length; i++) {
@@ -93,10 +114,10 @@ function setModeVisibility(mode) {
 //an array of 4 possible answers,
 //the index of the correct answer,
 //and the src of a gif to go along with the answer...
-function question(question, answers, i, gif) {
+function question(question, answers, correct, gif) {
 	this.question = question;
 	this.answers = answers;
-	this.i = i;
+	this.correct = correct;
 	this.gif = gif;
 }
 
