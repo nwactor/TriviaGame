@@ -86,6 +86,10 @@ function enterAnswerMode(givenAnswer) {
 	questionNumber++;
 	if(questionNumber < questionBank.length) {
 		//timer for next question
+		clearInterval(intervalId);
+		setInterval(function() {
+			enterQuestionMode();
+		}, 5000);
 	} else {
 		//go to results mode
 	}
@@ -134,29 +138,29 @@ var questionBank = [
 		""
 	),
 	new question(
-		"",
+		"What is the biggest planet in the solar system?",
 		[
-			"", 
-			"", 
-			"", 
-			""
+			"Mercury", 
+			"Saturn", 
+			"Venus", 
+			"Jupiter"
 		],
-		1,
+		4,
 		""
 	),
 	new question(
-		"",
+		"What is at the center of the Milky Way?",
 		[
-			"", 
-			"", 
-			"", 
-			""
+			"Worm Hole", 
+			"Stars. Lots of stars", 
+			"Black Hole", 
+			"Nugat"
 		],
-		1,
+		3,
 		""
 	),
 	new question(
-		"",
+		"What has the most mass?",
 		[
 			"", 
 			"", 
