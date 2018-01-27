@@ -94,7 +94,9 @@ function enterAnswerMode(givenAnswer) {
 		}, 4000);
 	} else {
 		//go to results mode
-		enterResultsMode();
+		setTimeout(function() {
+			enterResultsMode();;
+		}, 4000);
 	}
 }
 
@@ -144,7 +146,7 @@ var questionBank = [
 			"Polaris"
 		],
 		2,
-		""
+		"./assets/images/proxima.gif"
 	),
 	new question(
 		"What is the biggest planet in the solar system?",
@@ -155,7 +157,7 @@ var questionBank = [
 			"Jupiter"
 		],
 		4,
-		""
+		"./assets/images/jupiter.gif"
 	),
 	new question(
 		"What is at the center of the Milky Way?",
@@ -166,7 +168,7 @@ var questionBank = [
 			"Nugat"
 		],
 		3,
-		""
+		"./assets/images/black-hole.gif"
 	),
 	new question(
 		"What has the highest density?",
@@ -177,7 +179,7 @@ var questionBank = [
 			"A Neutron Star"
 		],
 		4,
-		""
+		"./assets/images/neutron-star.gif"
 	),
 	new question(
 		"What was the first man-made object to leave the Solar System?",
@@ -188,7 +190,7 @@ var questionBank = [
 			"Cassini"
 		],
 		1,
-		""
+		"./assets/images/voyager.gif"
 	),
 	new question(
 		"What is the largest of these objects?",
@@ -199,7 +201,7 @@ var questionBank = [
 			"A Black Hole"
 		],
 		2,
-		""
+		"./assets/images/cmb.gif"
 	),
 	new question(
 		"Who was the first person to set foot on another celesital body?",
@@ -210,7 +212,7 @@ var questionBank = [
 			"John Glenn"
 		],
 		3,
-		""
+		"./assets/images/moonwalk.gif"
 	),
 	new question(
 		"How long does it take light from the Sun to reach the Earth?",
@@ -221,7 +223,7 @@ var questionBank = [
 			"One hour"
 		],
 		2,
-		""
+		"./assets/images/sunlight.gif"
 	),
 	new question(
 		"How many planets have been discovered outside the Solar System as of January 2018?",
@@ -232,6 +234,6 @@ var questionBank = [
 			"407"
 		],
 		1,
-		""
+		"./assets/images/exoplanet.gif"
 	)											
 ];

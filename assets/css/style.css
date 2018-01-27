@@ -4,7 +4,6 @@ body {
 
 .container {
 	min-height: 640px;
-
 /*	min-height: 100%;
 	min-height: 100vh;
 	display: flex;*/
@@ -12,4 +11,12 @@ body {
 
 li {
 	cursor: pointer;
+}
+
+#answer-gif {
+	height: 300px;
+}
+
+#start-btn {
+	margin-top: 200px;
 }
